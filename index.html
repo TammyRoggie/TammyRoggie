@@ -464,6 +464,28 @@
     }
     footer a:hover { color: var(--gold); }
 
+    /* ── HAMBURGER ── */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      z-index: 101;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 1.5px;
+      background: var(--text-dark);
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
       nav { padding: 1.2rem 1.5rem; }
@@ -475,8 +497,25 @@
     }
     @media (max-width: 560px) {
       .gallery-grid { columns: 1; }
-      .nav-links { display: none; }
       .hero-title { font-size: 3.4rem; }
+      .hamburger { display: flex; }
+      .nav-links {
+        display: none;
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(253,249,244,0.98);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2.5rem;
+        z-index: 99;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a {
+        font-size: 1rem;
+        letter-spacing: 0.2em;
+        color: var(--text-dark);
+      }
     }
   </style>
 </head>
@@ -488,7 +527,10 @@
     <span class="nav-brand-name">Tammy <em>Roggie</em></span>
     <span class="nav-brand-title">Abstract Artist</span>
   </a>
-  <ul class="nav-links">
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="nav-links">
     <li><a href="#about-section">About</a></li>
     <li><a href="#gallery">Artwork</a></li>
     <li><a href="#love-letters">Love Letters</a></li>
@@ -515,7 +557,7 @@
 <section id="about-section">
   <div id="about">
     <div class="about-image-wrap">
-      <img src="IMG_4994.JPG" alt="Tammy Roggie — Abstract Artist" />
+      <img src="IMG_4994.JPG" alt="Tammy Roggie Abstract Artist" />
     </div>
     <div class="about-text">
       <p class="section-label">About</p>
@@ -525,16 +567,16 @@
         Tammy Roggie is an abstract artist, medicine woman, and guide whose offerings flow from the same source: a deep, intuitive trust in the wisdom of the body, spirit, and creative life.
       </p>
       <p>
-        Her abstract paintings are collected and exhibited internationally — bold, layered works that hold space for the full range of human experience. She works primarily in acrylic, painting from an inner knowing that has taken six decades to fully trust and honour.
+        Her abstract paintings are collected and exhibited internationally. Bold, layered works that hold space for the full range of human experience. She works primarily in acrylic, painting from an inner knowing that has taken six decades to fully trust and honour.
       </p>
       <p>
-        Alongside her visual art, Tammy holds a Master's degree in Pastoral Care and Counselling and brings a rooted, multi-faith spiritual perspective to everything she does. She has hosted retreat days weaving together intuitive painting, drumming, and yoga — trained formally in Vinyasa flow and shaped by a month of immersive living at the Sivananda Ashram on Paradise Island in the Bahamas.
+        Alongside her visual art, Tammy holds a Master's degree in Pastoral Care and Counselling and brings a rooted, multi-faith spiritual perspective to everything she does. She has hosted retreat days weaving together intuitive painting, drumming, and yoga. Trained formally in Vinyasa flow and shaped by a month of immersive living at the Sivananda Ashram on Paradise Island in the Bahamas.
       </p>
       <p>
-        One of her most recognized gifts is the gift of encouragement — a rare capacity to see others clearly and help them move forward with ease. She is a motivational speaker, an informal counsellor, and someone with an innate ability to sense what a good next step might look like for another person.
+        One of her most recognized gifts is the gift of encouragement. A rare capacity to see others clearly and help them move forward with ease. She is a motivational speaker, an informal counsellor, and someone with an innate ability to sense what a good next step might look like for another person.
       </p>
       <p>
-        All of it — the painting, the counselling, the retreats, the writing — comes from the same place of intuitive knowing. She looks forward to sharing what six decades on this planet has taught her.
+        All of it, the painting, the counselling, the retreats, the writing, comes from the same place of intuitive knowing. She looks forward to sharing what six decades on this planet has taught her.
       </p>
       <a href="https://www.instagram.com/grandunionarts" target="_blank" class="about-social">
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
@@ -599,13 +641,13 @@
     <h2 class="section-title"><em>Love Letters</em><br>to Humanity</h2>
     <div class="divider"></div>
     <blockquote class="quote">
-      "Every letter is an act of faith — that words, like paint, can reach across the distance between us and remind us we are not alone."
+      "Every letter is an act of faith. That words, like paint, can reach across the distance between us and remind us we are not alone."
     </blockquote>
     <p>
       Alongside her paintings, Tammy has spent years distilling her intuitive wisdom, spiritual insight, and deep belief in human potential into a series of written works she calls <em>Love Letters to Humanity</em>.
     </p>
     <p>
-      Each letter is an invitation — to slow down, to see yourself clearly, and to move forward into your life with ease and a renewed sense of possibility.
+      Each letter is an invitation to slow down, to see yourself clearly, and to move forward into your life with ease and a renewed sense of possibility.
     </p>
     <a href="mailto:tammyroggieart@gmail.com" class="btn">Enquire about the Love Letters →</a>
   </div>
@@ -618,7 +660,7 @@
     <h2 class="section-title">Enquire about<br><em>a work</em></h2>
     <div class="divider" style="margin: 0 auto 2rem;"></div>
     <p>
-      Whether you're interested in a specific piece, a commission, or simply want to say hello — Tammy would love to hear from you. Fill in the short form and she'll be in touch within a few days.
+      Whether you're interested in a specific piece, a commission, or simply want to say hello, Tammy would love to hear from you. Fill in the short form and she'll be in touch within a few days.
     </p>
     <a
       href="mailto:tammyroggieart@gmail.com?subject=Enquiry%20from%20your%20website&body=Hi%20Tammy%2C%0A%0AI%20came%20across%20your%20work%20and%20would%20love%20to%20connect.%0A%0AName%3A%20%0ALocation%3A%20%0A%0AWhat%20I%20am%20reaching%20out%20about%3A%0A%5B%20%5D%20I%20am%20interested%20in%20a%20specific%20painting%0A%5B%20%5D%20I%20would%20like%20to%20enquire%20about%20a%20commission%0A%5B%20%5D%20I%20am%20interested%20in%20the%20Love%20Letters%20to%20Humanity%0A%5B%20%5D%20I%20would%20like%20to%20learn%20more%20about%20your%20retreats%20or%20services%0A%5B%20%5D%20Other%0A%0AMessage%3A%0A%0A%0AThank%20you%20for%20your%20time%20%E2%80%94%20I%20look%20forward%20to%20hearing%20from%20you."
@@ -651,6 +693,21 @@
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 60);
   });
+
+  // Hamburger
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('nav-links');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    navLinks.classList.toggle('open');
+  });
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      navLinks.classList.remove('open');
+    });
+  });
+
   function openLightbox(src) {
     document.getElementById('lightbox-img').src = src;
     document.getElementById('lightbox').classList.add('open');
