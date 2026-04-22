@@ -57,6 +57,8 @@
       flex-direction: column;
       line-height: 1;
       text-decoration: none;
+      align-items: center;
+      gap: 0;
     }
     .nav-brand-name {
       font-family: 'Cormorant Garamond', serif;
@@ -74,7 +76,8 @@
       letter-spacing: 0.28em;
       text-transform: uppercase;
       color: var(--text-mid);
-      margin-top: 0.25rem;
+      margin-top: 0.45rem;
+      padding-left: 0.08em;
     }
     .nav-links {
       display: flex;
@@ -82,10 +85,10 @@
       list-style: none;
     }
     .nav-links a {
-      color: var(--text-mid);
+      color: #3A2050;
       text-decoration: none;
-      font-size: 0.75rem;
-      letter-spacing: 0.18em;
+      font-size: 0.85rem;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
       transition: color 0.3s;
     }
@@ -160,10 +163,10 @@
     }
     .hero-sub {
       margin-top: 1.6rem;
-      font-size: 0.95rem;
+      font-size: 1.1rem;
       font-weight: 300;
-      color: rgba(250,246,240,0.65);
-      letter-spacing: 0.1em;
+      color: rgba(250,246,240,0.85);
+      letter-spacing: 0.08em;
       animation: fadeup 1.4s 0.5s ease both;
     }
     .hero-scroll {
@@ -195,17 +198,17 @@
     /* ── SHARED ── */
     section { padding: 7rem 3rem; }
     .section-label {
-      font-size: 0.65rem;
-      letter-spacing: 0.32em;
+      font-size: 0.75rem;
+      letter-spacing: 0.28em;
       text-transform: uppercase;
       color: var(--rose);
       margin-bottom: 0.9rem;
     }
     .section-title {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2.2rem, 5vw, 3.6rem);
-      font-weight: 300;
-      line-height: 1.1;
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 400;
+      line-height: 1.15;
       color: var(--text-dark);
       margin-bottom: 1.8rem;
     }
@@ -250,10 +253,10 @@
     }
     .about-text { padding-top: 0.5rem; }
     .about-text p {
-      line-height: 1.95;
-      color: var(--text-mid);
-      font-size: 1rem;
-      margin-bottom: 1.1rem;
+      line-height: 2;
+      color: #3A2050;
+      font-size: 1.08rem;
+      margin-bottom: 1.2rem;
     }
     .about-text p:last-of-type { margin-bottom: 0; }
     .about-social {
@@ -373,9 +376,9 @@
       max-width: 680px;
     }
     .love-letters-inner p {
-      font-size: 1rem;
-      line-height: 1.95;
-      color: var(--text-mid);
+      font-size: 1.08rem;
+      line-height: 2;
+      color: #3A2050;
       margin-bottom: 1.3rem;
     }
     .love-letters-inner .quote {
@@ -414,8 +417,9 @@
       text-align: center;
     }
     .contact-inner p {
-      color: rgba(250,246,240,0.6);
-      line-height: 1.85;
+      color: rgba(250,246,240,0.85);
+      line-height: 1.95;
+      font-size: 1.05rem;
       margin-bottom: 2.5rem;
     }
     .contact-btn {
@@ -533,6 +537,7 @@
   <ul class="nav-links" id="nav-links">
     <li><a href="#about-section">About</a></li>
     <li><a href="#gallery">Artwork</a></li>
+    <li><a href="shop.html">Shop</a></li>
     <li><a href="#love-letters">Love Letters</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
@@ -545,7 +550,7 @@
   <div class="hero-content">
     <p class="hero-eyebrow">Abstract Works · Created Intentionally</p>
     <h1 class="hero-title">Tammy<br><em>Roggie</em></h1>
-    <p class="hero-sub">Painting love letters to humanity, one canvas at a time</p>
+    <p class="hero-sub">Painting from the place where words run out</p>
   </div>
   <div class="hero-scroll">
     <div class="scroll-line"></div>

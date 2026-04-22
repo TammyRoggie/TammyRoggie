@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shop — Tammy Roggie Art</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --rose:       #D94878;
+      --blush:      #F0B0C4;
+      --lavender:   #B060D0;
+      --violet:     #6A28A8;
+      --deep-violet:#3D1068;
+      --sky:        #6ECAE4;
+      --gold:       #F0C050;
+      --cream:      #FAF6F0;
+      --warm-white: #FDF9F4;
+      --ink:        #120A1E;
+      --soft-bg:    #F5EAFA;
+      --text-dark:  #1E0E30;
+      --text-mid:   #4A2860;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--warm-white);
+      color: var(--text-dark);
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.4rem 3rem;
+      background: rgba(253,249,244,0.97);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 1px 0 rgba(201,64,112,0.12);
+    }
+    .nav-brand {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      line-height: 1;
+      text-decoration: none;
+    }
+    .nav-brand-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      color: var(--text-dark);
+    }
+    .nav-brand-name em { font-style: italic; color: #D94878; }
+    .nav-brand-title {
+      font-size: 0.6rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--text-mid);
+      margin-top: 0.45rem;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+    .nav-links a {
+      color: #3A2050;
+      text-decoration: none;
+      font-size: 0.85rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--rose); }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 1.5px;
+      background: var(--text-dark);
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      padding: 10rem 3rem 4rem;
+      text-align: center;
+      background: linear-gradient(160deg, var(--soft-bg), var(--warm-white));
+    }
+    .page-header-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 1rem;
+    }
+    .page-header h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      font-weight: 300;
+      color: var(--text-dark);
+      line-height: 1;
+    }
+    .page-header h1 em { font-style: italic; color: var(--rose); }
+    .page-header-divider {
+      width: 55px;
+      height: 1px;
+      background: linear-gradient(to right, var(--violet), var(--rose), transparent);
+      margin: 1.8rem auto 0;
+    }
+    .page-header p {
+      margin-top: 1.5rem;
+      color: #3A2050;
+      font-size: 1.05rem;
+      line-height: 1.9;
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ── GRID ── */
+    .shop-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 5rem 3rem 8rem;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3rem 2.5rem;
+    }
+
+    /* ── CARD ── */
+    .card {
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    .card:hover { transform: translateY(-4px); }
+    .card-image {
+      position: relative;
+      overflow: hidden;
+      background: #e8e0f0;
+    }
+    .card-image img {
+      width: 100%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94), filter 0.4s;
+    }
+    .card:hover .card-image img {
+      transform: scale(1.04);
+      filter: saturate(1.1);
+    }
+    .card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(18,10,30,0.7), transparent 50%);
+      opacity: 0;
+      transition: opacity 0.4s;
+      display: flex;
+      align-items: flex-end;
+      padding: 1.2rem;
+    }
+    .card:hover .card-overlay { opacity: 1; }
+    .card-overlay-btn {
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--cream);
+      border: 1px solid rgba(250,246,240,0.5);
+      padding: 0.5rem 1.2rem;
+      transition: background 0.3s;
+    }
+    .card:hover .card-overlay-btn { background: rgba(250,246,240,0.15); }
+
+    .card-body {
+      padding: 1.3rem 0 0;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .card-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem;
+      font-weight: 400;
+      color: #1E0E30;
+      line-height: 1.25;
+      margin-bottom: 0.5rem;
+    }
+    .card-meta {
+      font-size: 0.82rem;
+      letter-spacing: 0.06em;
+      color: #4A2860;
+      margin-bottom: 0.8rem;
+    }
+    .card-desc {
+      font-size: 0.95rem;
+      line-height: 1.85;
+      color: #3A2050;
+      flex: 1;
+      margin-bottom: 1.2rem;
+    }
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(106,40,168,0.12);
+    }
+    .card-price {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 400;
+      color: var(--text-dark);
+    }
+    .card-price span {
+      font-size: 0.65rem;
+      font-family: 'Jost', sans-serif;
+      letter-spacing: 0.1em;
+      color: var(--text-mid);
+      margin-left: 0.3rem;
+      vertical-align: middle;
+    }
+    .card-enquire {
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--rose);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.3s;
+      padding-bottom: 1px;
+    }
+    .card-enquire:hover { border-color: var(--rose); }
+
+    /* ── MODAL ── */
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(18,10,30,0.92);
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    .modal.open { display: flex; }
+    .modal-inner {
+      background: var(--warm-white);
+      max-width: 900px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      animation: fadeup 0.3s ease both;
+    }
+    @keyframes fadeup {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .modal-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .modal-content {
+      padding: 3rem 2.5rem;
+      display: flex;
+      flex-direction: column;
+    }
+    .modal-label {
+      font-size: 0.62rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 0.8rem;
+    }
+    .modal-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 300;
+      line-height: 1.15;
+      color: var(--text-dark);
+      margin-bottom: 0.5rem;
+    }
+    .modal-divider {
+      width: 40px;
+      height: 1px;
+      background: linear-gradient(to right, var(--rose), transparent);
+      margin: 1rem 0 1.5rem;
+    }
+    .modal-desc {
+      font-size: 1rem;
+      line-height: 1.9;
+      color: #3A2050;
+      margin-bottom: 1.5rem;
+      flex: 1;
+    }
+    .modal-details {
+      font-size: 0.88rem;
+      letter-spacing: 0.06em;
+      color: #4A2860;
+      margin-bottom: 2rem;
+      line-height: 2;
+    }
+    .modal-price {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      color: var(--text-dark);
+      margin-bottom: 1.5rem;
+    }
+    .modal-price span {
+      font-size: 0.65rem;
+      font-family: 'Jost', sans-serif;
+      letter-spacing: 0.1em;
+      color: var(--text-mid);
+      margin-left: 0.3rem;
+      vertical-align: middle;
+    }
+    .modal-btn {
+      display: inline-block;
+      padding: 1rem 2rem;
+      background: linear-gradient(135deg, var(--violet), var(--deep-violet));
+      color: var(--cream);
+      text-decoration: none;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      text-align: center;
+      transition: opacity 0.3s;
+    }
+    .modal-btn:hover { opacity: 0.85; }
+    .modal-close {
+      position: absolute;
+      top: 1.5rem;
+      right: 2rem;
+      background: none;
+      border: none;
+      color: var(--cream);
+      font-size: 2rem;
+      cursor: pointer;
+      opacity: 0.5;
+      transition: opacity 0.2s;
+      line-height: 1;
+    }
+    .modal-close:hover { opacity: 1; }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 2rem 3rem;
+      text-align: center;
+      background: var(--ink);
+      border-top: 1px solid rgba(232,160,176,0.1);
+      font-size: 0.72rem;
+      color: rgba(250,246,240,0.2);
+      letter-spacing: 0.1em;
+    }
+    footer a { color: rgba(250,246,240,0.3); text-decoration: none; transition: color 0.3s; }
+    footer a:hover { color: var(--gold); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 1.2rem 1.5rem; }
+      .shop-grid { grid-template-columns: repeat(2, 1fr); padding: 4rem 1.5rem 6rem; }
+      .modal-inner { grid-template-columns: 1fr; }
+      .modal-image { max-height: 300px; }
+    }
+    @media (max-width: 560px) {
+      .shop-grid { grid-template-columns: 1fr; }
+      .page-header { padding: 8rem 1.5rem 3rem; }
+      .hamburger { display: flex; }
+      .nav-links {
+        display: none;
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(253,249,244,0.98);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2.5rem;
+        z-index: 99;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a { font-size: 1rem; color: var(--text-dark); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-brand">
+    <span class="nav-brand-name">Tammy <em>Roggie</em></span>
+    <span class="nav-brand-title">Abstract Artist</span>
+  </a>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="index.html#about-section">About</a></li>
+    <li><a href="index.html#gallery">Artwork</a></li>
+    <li><a href="shop.html" class="active">Shop</a></li>
+    <li><a href="index.html#love-letters">Love Letters</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <p class="page-header-label">Original Works</p>
+  <h1>The <em>Shop</em></h1>
+  <div class="page-header-divider"></div>
+  <p>Each piece is an original acrylic painting. Prices are in Canadian dollars. To enquire about a work, shipping, or to arrange a viewing, please get in touch.</p>
+</div>
+
+<!-- GRID -->
+<div class="shop-grid">
+
+  <div class="card" onclick="openModal('noflowers')">
+    <div class="card-image">
+      <img src="41c26270-3993-11f1-a250-5597e4018997.jpg" alt="NoFlowers, Please: Just You." />
+      <div class="card-overlay"><span class="card-overlay-btn">View Work</span></div>
+    </div>
+    <div class="card-body">
+      <h2 class="card-title">NoFlowers, Please: Just You.</h2>
+      <p class="card-meta">Acrylic on stretched canvas · 24 × 36 inches</p>
+      <p class="card-desc">Emotionally charged, expressive and textured.</p>
+      <div class="card-footer">
+        <span class="card-price">$750<span>CAD</span></span>
+        <a href="#" class="card-enquire" onclick="openModal('noflowers'); return false;">Enquire</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" onclick="openModal('hothouse')">
+    <div class="card-image">
+      <img src="20231127_132954_f55d6f40-8d52-11ee-9c03-4df9ead004c6.JPG" alt="Hothouse Flowers" />
+      <div class="card-overlay"><span class="card-overlay-btn">View Work</span></div>
+    </div>
+    <div class="card-body">
+      <h2 class="card-title">Hothouse Flowers</h2>
+      <p class="card-meta">Acrylic on canvas</p>
+      <p class="card-desc">Lush, vibrant and overflowing with life.</p>
+      <div class="card-footer">
+        <span class="card-price">$850<span>CAD</span></span>
+        <a href="#" class="card-enquire" onclick="openModal('hothouse'); return false;">Enquire</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" onclick="openModal('waterflow')">
+    <div class="card-image">
+      <img src="094e1190-3d73-11f0-9ce7-4df9dcc85dfc.jpg" alt="Water, Flow, Life" />
+      <div class="card-overlay"><span class="card-overlay-btn">View Work</span></div>
+    </div>
+    <div class="card-body">
+      <h2 class="card-title">Water, Flow, Life</h2>
+      <p class="card-meta">Acrylic on stretched canvas · 69 × 34 inches</p>
+      <p class="card-desc">A soft feeling painting about the beauty of going with the flow and radical acceptance.</p>
+      <div class="card-footer">
+        <span class="card-price">$1,800<span>CAD</span></span>
+        <a href="#" class="card-enquire" onclick="openModal('waterflow'); return false;">Enquire</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" onclick="openModal('yellowbrick')">
+    <div class="card-image">
+      <img src="47fe7750-26d3-11f1-9bbe-810ad4a72062.jpg" alt="Your Own Yellow Brick Road" />
+      <div class="card-overlay"><span class="card-overlay-btn">View Work</span></div>
+    </div>
+    <div class="card-body">
+      <h2 class="card-title">Your Own Yellow Brick Road</h2>
+      <p class="card-meta">Acrylic on heavy canvas · 72 × 73 inches · Ships rolled</p>
+      <p class="card-desc">A statement piece reminding us that we walk best when we walk a resonant, personal path.</p>
+      <div class="card-footer">
+        <span class="card-price">$4,000<span>CAD</span></span>
+        <a href="#" class="card-enquire" onclick="openModal('yellowbrick'); return false;">Enquire</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" onclick="openModal('sea')">
+    <div class="card-image">
+      <img src="20231202_181425_88eace60-9168-11ee-ad70-6db459793c3d.JPG" alt="Last Night I Dreamt of the Sea" />
+      <div class="card-overlay"><span class="card-overlay-btn">View Work</span></div>
+    </div>
+    <div class="card-body">
+      <h2 class="card-title">Last Night I Dreamt of the Sea</h2>
+      <p class="card-meta">Acrylic on stretched canvas · 24 × 24 inches</p>
+      <p class="card-desc">For people who need water like oxygen. A colourful and deeply felt piece.</p>
+      <div class="card-footer">
+        <span class="card-price">$450<span>CAD</span></span>
+        <a href="#" class="card-enquire" onclick="openModal('sea'); return false;">Enquire</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" onclick="openModal('querencia')">
+    <div class="card-image">
+      <img src="20240229_084331_8658f0b0-d708-11ee-8710-61a289b63752.JPG" alt="Querencia" />
+      <div class="card-overlay"><span class="card-overlay-btn">View Work</span></div>
+    </div>
+    <div class="card-body">
+      <h2 class="card-title">Querencia</h2>
+      <p class="card-meta">Acrylic on heavy canvas · 101 × 72 inches · Ships rolled</p>
+      <p class="card-desc">A bold, large statement piece about our definitions of home and the safe, stable places unique to each of us.</p>
+      <div class="card-footer">
+        <span class="card-price">$8,000<span>CAD</span></span>
+        <a href="#" class="card-enquire" onclick="openModal('querencia'); return false;">Enquire</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" onclick="openModal('dryspell')">
+    <div class="card-image">
+      <img src="20231219_120437_b0d396c0-9e90-11ee-a2e5-d9de7befaf2f.JPG" alt="The End of the Dry Spell" />
+      <div class="card-overlay"><span class="card-overlay-btn">View Work</span></div>
+    </div>
+    <div class="card-body">
+      <h2 class="card-title">The End of the Dry Spell</h2>
+      <p class="card-meta">Acrylic on canvas · 73 × 72 inches · Unstretched</p>
+      <p class="card-desc">For those times when the struggles lift and something new comes forth. New chapters and new opportunities.</p>
+      <div class="card-footer">
+        <span class="card-price">$2,300<span>CAD</span></span>
+        <a href="#" class="card-enquire" onclick="openModal('dryspell'); return false;">Enquire</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" onclick="openModal('armchair')">
+    <div class="card-image">
+      <img src="096bdd80-b270-11ef-b208-95b895dd2146.jpg" alt="Armchair Warriors" />
+      <div class="card-overlay"><span class="card-overlay-btn">View Work</span></div>
+    </div>
+    <div class="card-body">
+      <h2 class="card-title">Armchair Warriors</h2>
+      <p class="card-meta">Acrylic on canvas · 6 × 4 feet · Ships unstretched</p>
+      <p class="card-desc">Speaking to the ways we share strong opinions while hiding behind a screen. Bold and unapologetic.</p>
+      <div class="card-footer">
+        <span class="card-price">$4,000<span>CAD</span></span>
+        <a href="#" class="card-enquire" onclick="openModal('armchair'); return false;">Enquire</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" onclick="openModal('sixlimitless')">
+    <div class="card-image">
+      <img src="593fd9e0-09b6-11f0-b5cf-5d17665fc015.jpg" alt="Six and Limitless" />
+      <div class="card-overlay"><span class="card-overlay-btn">View Work</span></div>
+    </div>
+    <div class="card-body">
+      <h2 class="card-title">Six and Limitless</h2>
+      <p class="card-meta">Acrylic on canvas · 53 × 78 inches</p>
+      <p class="card-desc">A celebration of the refreshing innocence of childhood, when anything is possible and the world is limitless with joy.</p>
+      <div class="card-footer">
+        <span class="card-price">$4,000<span>CAD</span></span>
+        <a href="#" class="card-enquire" onclick="openModal('sixlimitless'); return false;">Enquire</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>
+    © 2025 Tammy Roggie Art &nbsp;·&nbsp; All works are original paintings &nbsp;·&nbsp;
+    <a href="mailto:tammyroggieart@gmail.com">tammyroggieart@gmail.com</a> &nbsp;·&nbsp;
+    <a href="https://www.instagram.com/grandunionarts" target="_blank">@grandunionarts</a>
+  </p>
+</footer>
+
+<!-- MODALS -->
+<div class="modal" id="modal" onclick="closeModal(event)">
+  <button class="modal-close" onclick="closeModal()">×</button>
+  <div class="modal-inner" onclick="event.stopPropagation()">
+    <div class="modal-image"><img id="modal-img" src="" alt="" /></div>
+    <div class="modal-content">
+      <p class="modal-label">Original Work</p>
+      <h2 class="modal-title" id="modal-title"></h2>
+      <div class="modal-divider"></div>
+      <p class="modal-desc" id="modal-desc"></p>
+      <p class="modal-details" id="modal-details"></p>
+      <p class="modal-price" id="modal-price"></p>
+      <a id="modal-btn" href="" class="modal-btn">Enquire about this work</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  const works = {
+    noflowers: {
+      img: '41c26270-3993-11f1-a250-5597e4018997.jpg',
+      title: 'NoFlowers, Please: Just You.',
+      desc: 'Emotionally charged, expressive and textured. A work that asks to be met as you are, without adornment or pretense.',
+      details: 'Medium: Acrylic on stretched canvas\nSize: 24 × 36 inches',
+      price: '$750 CAD'
+    },
+    hothouse: {
+      img: '20231127_132954_f55d6f40-8d52-11ee-9c03-4df9ead004c6.JPG',
+      title: 'Hothouse Flowers',
+      desc: 'Lush, vibrant and overflowing with life. A celebration of growth in contained and cultivated spaces.',
+      details: 'Medium: Acrylic on canvas',
+      price: '$850 CAD'
+    },
+    waterflow: {
+      img: '094e1190-3d73-11f0-9ce7-4df9dcc85dfc.jpg',
+      title: 'Water, Flow, Life',
+      desc: 'A soft feeling painting about the beauty of going with the flow and radical acceptance. An invitation to release and trust.',
+      details: 'Medium: Acrylic on stretched canvas\nSize: 69 × 34 inches',
+      price: '$1,800 CAD'
+    },
+    yellowbrick: {
+      img: '47fe7750-26d3-11f1-9bbe-810ad4a72062.jpg',
+      title: 'Your Own Yellow Brick Road',
+      desc: 'What brings you the feeling of most peace and harmony? A statement piece reminding us that we walk best when we walk a resonant, personal path.',
+      details: 'Medium: Acrylic on heavy canvas\nSize: 72 × 73 inches\nShips rolled due to size',
+      price: '$4,000 CAD'
+    },
+    sea: {
+      img: '20231202_181425_88eace60-9168-11ee-ad70-6db459793c3d.JPG',
+      title: 'Last Night I Dreamt of the Sea',
+      desc: 'Dreaming of the ocean is an everyday occurrence for people who need water like oxygen. A colourful and deeply felt piece.',
+      details: 'Medium: Acrylic on stretched canvas\nSize: 24 × 24 inches',
+      price: '$450 CAD'
+    },
+    querencia: {
+      img: '20240229_084331_8658f0b0-d708-11ee-8710-61a289b63752.JPG',
+      title: 'Querencia',
+      desc: 'A bold, large statement piece about our definitions of home and the safe, stable places that are unique to each of us. How do we define and inhabit these spaces?',
+      details: 'Medium: Acrylic on heavy canvas\nSize: 101 × 72 inches\nShips rolled due to size\nPrices in Canadian dollars',
+      price: '$8,000 CAD'
+    },
+    dryspell: {
+      img: '20231219_120437_b0d396c0-9e90-11ee-a2e5-d9de7befaf2f.JPG',
+      title: 'The End of the Dry Spell',
+      desc: 'Speaking to the times in our lives when the struggles appear to have lifted and something new is coming forth. New chapters and new opportunities.',
+      details: 'Medium: Acrylic on canvas\nSize: 73 × 72 inches\nUnstretched lightweight canvas',
+      price: '$2,300 CAD'
+    },
+    armchair: {
+      img: '096bdd80-b270-11ef-b208-95b895dd2146.jpg',
+      title: 'Armchair Warriors',
+      desc: 'Speaking to the ways we share strong opinions and ideas while finding safety behind a screen. Bold, unapologetic, and very large.',
+      details: 'Medium: Acrylic on canvas\nSize: 6 feet wide × 4 feet high\nShips unstretched',
+      price: '$4,000 CAD'
+    },
+    sixlimitless: {
+      img: '593fd9e0-09b6-11f0-b5cf-5d17665fc015.jpg',
+      title: 'Six and Limitless',
+      desc: 'A celebration of the refreshing innocence of childhood, when anything is possible and the world is limitless with joy.',
+      details: 'Medium: Acrylic on canvas\nSize: 53 × 78 inches',
+      price: '$4,000 CAD'
+    }
+  };
+
+  function openModal(id) {
+    const w = works[id];
+    document.getElementById('modal-img').src = w.img;
+    document.getElementById('modal-img').alt = w.title;
+    document.getElementById('modal-title').textContent = w.title;
+    document.getElementById('modal-desc').textContent = w.desc;
+    document.getElementById('modal-details').style.whiteSpace = 'pre-line';
+    document.getElementById('modal-details').textContent = w.details;
+    document.getElementById('modal-price').innerHTML = w.price + ' <span>incl. GST where applicable</span>';
+    const subject = encodeURIComponent('Enquiry: ' + w.title);
+    const body = encodeURIComponent('Hi Tammy,\n\nI am interested in "' + w.title + '" and would love to learn more.\n\nName: \nLocation: \n\nMessage:\n\n\nThank you for your time.');
+    document.getElementById('modal-btn').href = 'mailto:tammyroggieart@gmail.com?subject=' + subject + '&body=' + body;
+    document.getElementById('modal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal(e) {
+    if (!e || e.target === document.getElementById('modal') || e.target.classList.contains('modal-close')) {
+      document.getElementById('modal').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  }
+
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('nav-links');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    navLinks.classList.toggle('open');
+  });
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      navLinks.classList.remove('open');
+    });
+  });
+</script>
+</body>
+</html>
