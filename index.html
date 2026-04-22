@@ -97,36 +97,35 @@
     /* ── HERO ── */
     #hero {
       position: relative;
-      height: 100vh;
+      min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
       overflow: hidden;
+      background: linear-gradient(160deg, #1A0830 0%, #2D1060 40%, #1A0830 100%);
     }
-    .hero-bg {
+    /* Subtle grain texture overlay for depth */
+    #hero::before {
+      content: '';
       position: absolute;
       inset: 0;
-      background-image: url('41c26270-3993-11f1-a250-5597e4018997.jpg');
-      background-size: cover;
-      background-position: center;
-      filter: saturate(1.05) brightness(0.86);
-      transform: scale(1.05);
-      animation: slowzoom 22s ease-in-out infinite alternate;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      opacity: 0.3;
+      pointer-events: none;
     }
-    @keyframes slowzoom {
-      from { transform: scale(1.05); }
-      to   { transform: scale(1.13); }
-    }
-    .hero-overlay {
+    /* Decorative colour orbs */
+    #hero::after {
+      content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(
-        160deg,
-        rgba(18,10,30,0.82) 0%,
-        rgba(61,16,104,0.55) 45%,
-        rgba(18,10,30,0.85) 100%
-      );
+      background:
+        radial-gradient(ellipse 60% 50% at 20% 50%, rgba(176,96,208,0.18) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 60% at 80% 30%, rgba(217,72,120,0.12) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 40% at 60% 80%, rgba(91,184,212,0.08) 0%, transparent 70%);
+      pointer-events: none;
     }
+    .hero-bg { display: none; }
+    .hero-overlay { display: none; }
     .hero-content {
       position: relative;
       text-align: center;
@@ -138,13 +137,12 @@
       to   { opacity: 1; transform: translateY(0); }
     }
     .hero-eyebrow {
-      font-size: 0.7rem;
+      font-size: 0.78rem;
       letter-spacing: 0.35em;
       text-transform: uppercase;
       color: #FFE066;
       margin-bottom: 1.3rem;
       animation: fadeup 1.4s 0.2s ease both;
-      text-shadow: 0 1px 14px rgba(0,0,0,0.45);
     }
     .hero-title {
       font-family: 'Cormorant Garamond', serif;
@@ -154,18 +152,16 @@
       letter-spacing: 0.04em;
       color: #FFFFFF;
       animation: fadeup 1.4s 0.35s ease both;
-      text-shadow: 0 2px 40px rgba(24,14,32,0.5);
     }
     .hero-title em {
       font-style: italic;
       color: #D94878;
-      text-shadow: 0 0 70px rgba(217,72,120,0.45);
     }
     .hero-sub {
       margin-top: 1.6rem;
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       font-weight: 300;
-      color: rgba(250,246,240,0.85);
+      color: rgba(250,246,240,0.9);
       letter-spacing: 0.08em;
       animation: fadeup 1.4s 0.5s ease both;
     }
@@ -195,7 +191,29 @@
       50% { opacity: 1; }
     }
 
-    /* ── SHARED ── */
+    /* ── FEATURED STRIP ── */
+    .featured-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      height: 340px;
+      overflow: hidden;
+    }
+    .featured-strip-item {
+      overflow: hidden;
+      position: relative;
+    }
+    .featured-strip-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);
+      filter: saturate(1.05);
+    }
+    .featured-strip-item:hover img { transform: scale(1.06); }
+    @media (max-width: 560px) {
+      .featured-strip { grid-template-columns: 1fr; height: auto; }
+      .featured-strip-item { height: 220px; }
+    }
     section { padding: 7rem 3rem; }
     .section-label {
       font-size: 0.75rem;
@@ -557,6 +575,19 @@
     <span>Scroll</span>
   </div>
 </section>
+
+<!-- FEATURED STRIP -->
+<div class="featured-strip">
+  <div class="featured-strip-item">
+    <img src="41c26270-3993-11f1-a250-5597e4018997.jpg" alt="NoFlowers, Please: Just You." />
+  </div>
+  <div class="featured-strip-item">
+    <img src="47fe7750-26d3-11f1-9bbe-810ad4a72062.jpg" alt="Your Own Yellow Brick Road" />
+  </div>
+  <div class="featured-strip-item">
+    <img src="094e1190-3d73-11f0-9ce7-4df9dcc85dfc.jpg" alt="Water, Flow, Life" />
+  </div>
+</div>
 
 <!-- ABOUT -->
 <section id="about-section">

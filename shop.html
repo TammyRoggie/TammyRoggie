@@ -8,11 +8,9 @@
   <style>
     :root {
       --rose:       #D94878;
-      --blush:      #F0B0C4;
       --lavender:   #B060D0;
       --violet:     #6A28A8;
       --deep-violet:#3D1068;
-      --sky:        #6ECAE4;
       --gold:       #F0C050;
       --cream:      #FAF6F0;
       --warm-white: #FDF9F4;
@@ -31,273 +29,90 @@
       overflow-x: hidden;
     }
 
-    /* ── NAV ── */
+    /* NAV */
     nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
       padding: 1.4rem 3rem;
       background: rgba(253,249,244,0.97);
       backdrop-filter: blur(12px);
       box-shadow: 0 1px 0 rgba(201,64,112,0.12);
     }
-    .nav-brand {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      line-height: 1;
-      text-decoration: none;
-    }
-    .nav-brand-name {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.25rem;
-      font-weight: 400;
-      letter-spacing: 0.1em;
-      color: var(--text-dark);
-    }
+    .nav-brand { display: flex; flex-direction: column; align-items: center; line-height: 1; text-decoration: none; }
+    .nav-brand-name { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 400; letter-spacing: 0.1em; color: var(--text-dark); }
     .nav-brand-name em { font-style: italic; color: #D94878; }
-    .nav-brand-title {
-      font-size: 0.6rem;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      color: var(--text-mid);
-      margin-top: 0.45rem;
-    }
+    .nav-brand-title { font-size: 0.6rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--text-mid); margin-top: 0.45rem; }
     .nav-links { display: flex; gap: 2.5rem; list-style: none; }
-    .nav-links a {
-      color: #3A2050;
-      text-decoration: none;
-      font-size: 0.85rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      transition: color 0.3s;
-    }
+    .nav-links a { color: #3A2050; text-decoration: none; font-size: 0.85rem; letter-spacing: 0.15em; text-transform: uppercase; transition: color 0.3s; }
     .nav-links a:hover, .nav-links a.active { color: var(--rose); }
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 4px;
-    }
-    .hamburger span {
-      display: block; width: 24px; height: 1.5px;
-      background: var(--text-dark);
-      transition: transform 0.3s, opacity 0.3s;
-    }
+    .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+    .hamburger span { display: block; width: 24px; height: 1.5px; background: var(--text-dark); transition: transform 0.3s, opacity 0.3s; }
     .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
     .hamburger.open span:nth-child(2) { opacity: 0; }
     .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
-    /* ── PAGE HEADER ── */
-    .page-header {
-      padding: 10rem 3rem 4rem;
-      text-align: center;
-      background: linear-gradient(160deg, var(--soft-bg), var(--warm-white));
-    }
-    .page-header-label {
-      font-size: 0.75rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--rose);
-      margin-bottom: 1rem;
-    }
-    .page-header h1 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2.8rem, 6vw, 5rem);
-      font-weight: 400;
-      color: var(--text-dark);
-      line-height: 1;
-    }
+    /* PAGE HEADER */
+    .page-header { padding: 10rem 3rem 4rem; text-align: center; background: linear-gradient(160deg, var(--soft-bg), var(--warm-white)); }
+    .page-header-label { font-size: 0.75rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--rose); margin-bottom: 1rem; }
+    .page-header h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.8rem, 6vw, 5rem); font-weight: 400; color: var(--text-dark); line-height: 1; }
     .page-header h1 em { font-style: italic; color: var(--rose); }
-    .page-header-divider {
-      width: 55px; height: 1px;
-      background: linear-gradient(to right, var(--violet), var(--rose), transparent);
-      margin: 1.8rem auto 0;
-    }
-    .page-header p {
-      margin-top: 1.5rem;
-      color: #3A2050;
-      font-size: 1.05rem;
-      line-height: 1.9;
-      max-width: 560px;
-      margin-left: auto;
-      margin-right: auto;
-    }
+    .page-header-divider { width: 55px; height: 1px; background: linear-gradient(to right, var(--violet), var(--rose), transparent); margin: 1.8rem auto 0; }
+    .page-header p { margin-top: 1.5rem; color: #3A2050; font-size: 1.05rem; line-height: 1.9; max-width: 560px; margin-left: auto; margin-right: auto; }
 
-    /* ── NOTE BOX ── */
-    .shop-note {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 3rem;
-    }
-    .shop-note-inner {
-      background: #f0e8fa;
-      border-left: 3px solid var(--violet);
-      padding: 1rem 1.5rem;
-      font-size: 0.88rem;
-      color: #3A2050;
-      line-height: 1.7;
-    }
+    /* NOTE */
+    .shop-note { max-width: 1200px; margin: 0 auto; padding: 0 3rem; }
+    .shop-note-inner { background: #f0e8fa; border-left: 3px solid var(--violet); padding: 1rem 1.5rem; font-size: 0.9rem; color: #3A2050; line-height: 1.7; }
 
-    /* ── GRID ── */
-    .shop-grid {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 4rem 3rem 8rem;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 3rem 2.5rem;
-    }
+    /* GRID */
+    .shop-grid { max-width: 1200px; margin: 0 auto; padding: 4rem 3rem 8rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem 2.5rem; }
 
-    /* ── CARD ── */
+    /* CARD */
     .card { display: flex; flex-direction: column; cursor: pointer; transition: transform 0.3s; }
     .card:hover { transform: translateY(-4px); }
     .card-image { position: relative; overflow: hidden; background: #e8e0f0; }
-    .card-image img {
-      width: 100%;
-      aspect-ratio: 4/5;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94), filter 0.4s;
-    }
-    .card-image.placeholder {
-      aspect-ratio: 4/5;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(135deg, #e8e0f0, #d8c8ec);
-    }
-    .card-image.placeholder span {
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
-      font-size: 0.9rem;
-      color: #7A5090;
-      text-align: center;
-      padding: 1rem;
-      line-height: 1.6;
-    }
+    .card-image img { width: 100%; aspect-ratio: 4/5; object-fit: cover; display: block; transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94), filter 0.4s; }
     .card:hover .card-image img { transform: scale(1.04); filter: saturate(1.1); }
-    .card-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(18,10,30,0.7), transparent 50%);
-      opacity: 0; transition: opacity 0.4s;
-      display: flex; align-items: flex-end; padding: 1.2rem;
-    }
+    .card-image.placeholder { aspect-ratio: 4/5; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #e8e0f0, #d8c8ec); }
+    .card-image.placeholder span { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 0.95rem; color: #7A5090; text-align: center; padding: 1.5rem; line-height: 1.7; }
+    .card-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(18,10,30,0.7), transparent 50%); opacity: 0; transition: opacity 0.4s; display: flex; align-items: flex-end; padding: 1.2rem; }
     .card:hover .card-overlay { opacity: 1; }
-    .card-overlay-btn {
-      font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
-      color: var(--cream); border: 1px solid rgba(250,246,240,0.5);
-      padding: 0.5rem 1.2rem;
-    }
+    .card-overlay-btn { font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--cream); border: 1px solid rgba(250,246,240,0.5); padding: 0.5rem 1.2rem; }
     .card-body { padding: 1.3rem 0 0; flex: 1; display: flex; flex-direction: column; }
-    .card-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.35rem; font-weight: 400;
-      color: #1E0E30; line-height: 1.25; margin-bottom: 0.5rem;
-    }
+    .card-title { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; font-weight: 400; color: #1E0E30; line-height: 1.25; margin-bottom: 0.5rem; }
     .card-meta { font-size: 0.82rem; letter-spacing: 0.06em; color: #4A2860; margin-bottom: 0.8rem; }
     .card-desc { font-size: 0.95rem; line-height: 1.85; color: #3A2050; flex: 1; margin-bottom: 1.2rem; }
-    .card-footer {
-      display: flex; align-items: center; justify-content: space-between;
-      padding-top: 1rem; border-top: 1px solid rgba(106,40,168,0.12);
-    }
-    .card-price {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.3rem; font-weight: 400; color: var(--text-dark);
-    }
-    .card-price span {
-      font-size: 0.65rem; font-family: 'Jost', sans-serif;
-      letter-spacing: 0.1em; color: var(--text-mid);
-      margin-left: 0.3rem; vertical-align: middle;
-    }
-    .card-enquire {
-      font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
-      color: var(--rose); text-decoration: none;
-      border-bottom: 1px solid transparent; transition: border-color 0.3s; padding-bottom: 1px;
-    }
+    .card-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 1rem; border-top: 1px solid rgba(106,40,168,0.12); }
+    .card-price { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 400; color: var(--text-dark); }
+    .card-price span { font-size: 0.65rem; font-family: 'Jost', sans-serif; letter-spacing: 0.1em; color: var(--text-mid); margin-left: 0.3rem; vertical-align: middle; }
+    .card-enquire { font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--rose); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.3s; padding-bottom: 1px; }
     .card-enquire:hover { border-color: var(--rose); }
 
-    /* ── MODAL ── */
-    .modal {
-      display: none; position: fixed; inset: 0; z-index: 200;
-      background: rgba(18,10,30,0.92);
-      align-items: center; justify-content: center; padding: 2rem;
-    }
+    /* MODAL */
+    .modal { display: none; position: fixed; inset: 0; z-index: 200; background: rgba(18,10,30,0.92); align-items: center; justify-content: center; padding: 2rem; }
     .modal.open { display: flex; }
-    .modal-inner {
-      background: var(--warm-white);
-      max-width: 900px; width: 100%; max-height: 90vh; overflow-y: auto;
-      display: grid; grid-template-columns: 1fr 1fr;
-      animation: fadeup 0.3s ease both;
-    }
-    @keyframes fadeup {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+    .modal-inner { background: var(--warm-white); max-width: 900px; width: 100%; max-height: 90vh; overflow-y: auto; display: grid; grid-template-columns: 1fr 1fr; animation: fadeup 0.3s ease both; }
+    @keyframes fadeup { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     .modal-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .modal-image.placeholder {
-      display: flex; align-items: center; justify-content: center;
-      background: linear-gradient(135deg, #e8e0f0, #d8c8ec); min-height: 300px;
-    }
-    .modal-image.placeholder span {
-      font-family: 'Cormorant Garamond', serif; font-style: italic;
-      font-size: 1rem; color: #7A5090; text-align: center; padding: 2rem;
-    }
+    .modal-image.placeholder { display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #e8e0f0, #d8c8ec); min-height: 300px; }
+    .modal-image.placeholder span { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1rem; color: #7A5090; text-align: center; padding: 2rem; }
     .modal-content { padding: 3rem 2.5rem; display: flex; flex-direction: column; }
-    .modal-label {
-      font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase;
-      color: var(--rose); margin-bottom: 0.8rem;
-    }
-    .modal-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 400;
-      line-height: 1.15; color: var(--text-dark); margin-bottom: 0.5rem;
-    }
-    .modal-divider {
-      width: 40px; height: 1px;
-      background: linear-gradient(to right, var(--rose), transparent);
-      margin: 1rem 0 1.5rem;
-    }
+    .modal-label { font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--rose); margin-bottom: 0.8rem; }
+    .modal-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 400; line-height: 1.15; color: var(--text-dark); margin-bottom: 0.5rem; }
+    .modal-divider { width: 40px; height: 1px; background: linear-gradient(to right, var(--rose), transparent); margin: 1rem 0 1.5rem; }
     .modal-desc { font-size: 1rem; line-height: 1.9; color: #3A2050; margin-bottom: 1.5rem; flex: 1; }
-    .modal-details {
-      font-size: 0.88rem; letter-spacing: 0.06em; color: #4A2860;
-      margin-bottom: 2rem; line-height: 2; white-space: pre-line;
-    }
+    .modal-details { font-size: 0.88rem; letter-spacing: 0.06em; color: #4A2860; margin-bottom: 2rem; line-height: 2; white-space: pre-line; }
     .modal-price { font-family: 'Cormorant Garamond', serif; font-size: 2rem; color: var(--text-dark); margin-bottom: 1.5rem; }
-    .modal-price span {
-      font-size: 0.65rem; font-family: 'Jost', sans-serif;
-      letter-spacing: 0.1em; color: var(--text-mid); margin-left: 0.3rem; vertical-align: middle;
-    }
-    .modal-btn {
-      display: inline-block; padding: 1rem 2rem;
-      background: linear-gradient(135deg, var(--violet), var(--deep-violet));
-      color: var(--cream); text-decoration: none; font-size: 0.82rem;
-      letter-spacing: 0.2em; text-transform: uppercase; text-align: center; transition: opacity 0.3s;
-    }
+    .modal-btn { display: inline-block; padding: 1rem 2rem; background: linear-gradient(135deg, var(--violet), var(--deep-violet)); color: var(--cream); text-decoration: none; font-size: 0.82rem; letter-spacing: 0.2em; text-transform: uppercase; text-align: center; transition: opacity 0.3s; }
     .modal-btn:hover { opacity: 0.85; }
-    .modal-close {
-      position: absolute; top: 1.5rem; right: 2rem;
-      background: none; border: none; color: var(--cream);
-      font-size: 2.2rem; cursor: pointer; opacity: 0.6; transition: opacity 0.2s; line-height: 1;
-    }
+    .modal-close { position: absolute; top: 1.5rem; right: 2rem; background: none; border: none; color: var(--cream); font-size: 2.2rem; cursor: pointer; opacity: 0.6; transition: opacity 0.2s; line-height: 1; }
     .modal-close:hover { opacity: 1; }
 
-    /* ── FOOTER ── */
-    footer {
-      padding: 2rem 3rem; text-align: center;
-      background: var(--ink); border-top: 1px solid rgba(232,160,176,0.1);
-      font-size: 0.78rem; color: rgba(250,246,240,0.25); letter-spacing: 0.1em;
-    }
+    /* FOOTER */
+    footer { padding: 2rem 3rem; text-align: center; background: var(--ink); border-top: 1px solid rgba(232,160,176,0.1); font-size: 0.78rem; color: rgba(250,246,240,0.25); letter-spacing: 0.1em; }
     footer a { color: rgba(250,246,240,0.4); text-decoration: none; transition: color 0.3s; }
     footer a:hover { color: var(--gold); }
 
-    /* ── RESPONSIVE ── */
+    /* RESPONSIVE */
     @media (max-width: 900px) {
       nav { padding: 1.2rem 1.5rem; }
       .shop-grid { grid-template-columns: repeat(2, 1fr); padding: 4rem 1.5rem 6rem; }
@@ -309,13 +124,7 @@
       .shop-grid { grid-template-columns: 1fr; }
       .page-header { padding: 8rem 1.5rem 3rem; }
       .hamburger { display: flex; }
-      .nav-links {
-        display: none; position: fixed;
-        top: 0; left: 0; right: 0; bottom: 0;
-        background: rgba(253,249,244,0.98);
-        flex-direction: column; align-items: center; justify-content: center;
-        gap: 2.5rem; z-index: 99;
-      }
+      .nav-links { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(253,249,244,0.98); flex-direction: column; align-items: center; justify-content: center; gap: 2.5rem; z-index: 99; }
       .nav-links.open { display: flex; }
       .nav-links a { font-size: 1.1rem; color: var(--text-dark); }
     }
@@ -323,7 +132,6 @@
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <a href="index.html" class="nav-brand">
     <span class="nav-brand-name">Tammy <em>Roggie</em></span>
@@ -341,371 +149,261 @@
   </ul>
 </nav>
 
-<!-- PAGE HEADER -->
 <div class="page-header">
   <p class="page-header-label">Original Works</p>
   <h1>The <em>Shop</em></h1>
   <div class="page-header-divider"></div>
-  <p>Each piece is an original acrylic painting. Prices are in Canadian dollars. Shipping is the responsibility of the purchaser. To enquire about a work, please get in touch directly.</p>
+  <p>Each piece is an original acrylic painting. Prices are in Canadian dollars. Shipping is the responsibility of the purchaser. To enquire about a work please get in touch directly.</p>
 </div>
 
-<!-- NOTE -->
 <div class="shop-note">
   <div class="shop-note-inner">
-    Images marked "Photo coming soon" are available for enquiry. Please email Tammy directly and she will send photos upon request.
+    Pieces marked "Image available on request" are available for enquiry. Please email Tammy directly and she will send photos upon request.
   </div>
 </div>
 
-<!-- GRID -->
 <div class="shop-grid">
 
-  <!-- 1. NoFlowers Please: Just You -->
   <div class="card" onclick="openModal('noflowers')">
-    <div class="card-image">
-      <img src="41c26270-3993-11f1-a250-5597e4018997.jpg" alt="NoFlowers, Please: Just You." />
-      <div class="card-overlay"><span class="card-overlay-btn">View Work</span></div>
-    </div>
+    <div class="card-image"><img src="41c26270-3993-11f1-a250-5597e4018997.jpg" alt="NoFlowers, Please: Just You." /><div class="card-overlay"><span class="card-overlay-btn">View Work</span></div></div>
     <div class="card-body">
       <h2 class="card-title">NoFlowers, Please: Just You.</h2>
       <p class="card-meta">Acrylic on stretched canvas · 24 × 36 inches</p>
       <p class="card-desc">Emotionally charged, expressive and textured.</p>
-      <div class="card-footer">
-        <span class="card-price">$750<span>CAD</span></span>
-        <a href="#" class="card-enquire" onclick="openModal('noflowers'); return false;">Enquire</a>
-      </div>
+      <div class="card-footer"><span class="card-price">$750<span>CAD</span></span><a href="#" class="card-enquire" onclick="openModal('noflowers');return false;">Enquire</a></div>
     </div>
   </div>
 
-  <!-- 2. Hothouse Flowers -->
   <div class="card" onclick="openModal('hothouse')">
-    <div class="card-image">
-      <img src="20231127_132954_f55d6f40-8d52-11ee-9c03-4df9ead004c6.JPG" alt="Hothouse Flowers" />
-      <div class="card-overlay"><span class="card-overlay-btn">View Work</span></div>
-    </div>
+    <div class="card-image"><img src="20231127_132954_f55d6f40-8d52-11ee-9c03-4df9ead004c6.JPG" alt="Hothouse Flowers" /><div class="card-overlay"><span class="card-overlay-btn">View Work</span></div></div>
     <div class="card-body">
       <h2 class="card-title">Hothouse Flowers</h2>
       <p class="card-meta">Acrylic on stretched canvas · 36 × 36 inches</p>
-      <p class="card-desc">A vibrant acrylic still life. Lush and alive.</p>
-      <div class="card-footer">
-        <span class="card-price">$850<span>CAD</span></span>
-        <a href="#" class="card-enquire" onclick="openModal('hothouse'); return false;">Enquire</a>
-      </div>
+      <p class="card-desc">A vibrant acrylic still life. Lush, alive and overflowing.</p>
+      <div class="card-footer"><span class="card-price">$850<span>CAD</span></span><a href="#" class="card-enquire" onclick="openModal('hothouse');return false;">Enquire</a></div>
     </div>
   </div>
 
-  <!-- 3. Water Flow Life -->
   <div class="card" onclick="openModal('waterflow')">
-    <div class="card-image">
-      <img src="094e1190-3d73-11f0-9ce7-4df9dcc85dfc.jpg" alt="Water, Flow, Life" />
-      <div class="card-overlay"><span class="card-overlay-btn">View Work</span></div>
-    </div>
+    <div class="card-image"><img src="094e1190-3d73-11f0-9ce7-4df9dcc85dfc.jpg" alt="Water, Flow, Life" /><div class="card-overlay"><span class="card-overlay-btn">View Work</span></div></div>
     <div class="card-body">
       <h2 class="card-title">Water, Flow, Life</h2>
       <p class="card-meta">Acrylic on stretched canvas · 69 × 34 inches</p>
       <p class="card-desc">About the beauty of going with the flow and radical acceptance.</p>
-      <div class="card-footer">
-        <span class="card-price">$1,800<span>CAD</span></span>
-        <a href="#" class="card-enquire" onclick="openModal('waterflow'); return false;">Enquire</a>
-      </div>
+      <div class="card-footer"><span class="card-price">$1,800<span>CAD</span></span><a href="#" class="card-enquire" onclick="openModal('waterflow');return false;">Enquire</a></div>
     </div>
   </div>
 
-  <!-- 4. This is A Good Day -->
   <div class="card" onclick="openModal('goodday')">
-    <div class="card-image placeholder">
-      <span>Photo coming soon</span>
-    </div>
+    <div class="card-image"><img src="20231202_181425_88eace60-9168-11ee-ad70-6db459793c3d.JPG" alt="This is A Good Day" /><div class="card-overlay"><span class="card-overlay-btn">View Work</span></div></div>
     <div class="card-body">
       <h2 class="card-title">This is A Good Day</h2>
       <p class="card-meta">Acrylic on gallery wrapped canvas · 30 × 40 inches</p>
       <p class="card-desc">A reminder of warm, safe places. There is light and there is hope and sanctuary.</p>
-      <div class="card-footer">
-        <span class="card-price">$1,000<span>CAD</span></span>
-        <a href="#" class="card-enquire" onclick="openModal('goodday'); return false;">Enquire</a>
-      </div>
+      <div class="card-footer"><span class="card-price">$1,000<span>CAD</span></span><a href="#" class="card-enquire" onclick="openModal('goodday');return false;">Enquire</a></div>
     </div>
   </div>
 
-  <!-- 5. Your Own Yellow Brick Road -->
   <div class="card" onclick="openModal('yellowbrick')">
-    <div class="card-image">
-      <img src="47fe7750-26d3-11f1-9bbe-810ad4a72062.jpg" alt="Your Own Yellow Brick Road" />
-      <div class="card-overlay"><span class="card-overlay-btn">View Work</span></div>
-    </div>
+    <div class="card-image"><img src="47fe7750-26d3-11f1-9bbe-810ad4a72062.jpg" alt="Your Own Yellow Brick Road" /><div class="card-overlay"><span class="card-overlay-btn">View Work</span></div></div>
     <div class="card-body">
       <h2 class="card-title">Your Own Yellow Brick Road</h2>
       <p class="card-meta">Acrylic on heavy canvas · 72 × 73 inches · Ships rolled</p>
       <p class="card-desc">A statement piece reminding us that we walk best when we walk a resonant, personal path.</p>
-      <div class="card-footer">
-        <span class="card-price">$4,000<span>CAD</span></span>
-        <a href="#" class="card-enquire" onclick="openModal('yellowbrick'); return false;">Enquire</a>
-      </div>
+      <div class="card-footer"><span class="card-price">$4,000<span>CAD</span></span><a href="#" class="card-enquire" onclick="openModal('yellowbrick');return false;">Enquire</a></div>
     </div>
   </div>
 
-  <!-- 6. Last Night I Dreamt of the Sea -->
   <div class="card" onclick="openModal('sea')">
-    <div class="card-image">
-      <img src="20231202_181425_88eace60-9168-11ee-ad70-6db459793c3d.JPG" alt="Last Night I Dreamt of the Sea" />
-      <div class="card-overlay"><span class="card-overlay-btn">View Work</span></div>
-    </div>
+    <div class="card-image"><img src="096bdd80-b270-11ef-b208-95b895dd2146.jpg" alt="Last Night I Dreamt of the Sea" /><div class="card-overlay"><span class="card-overlay-btn">View Work</span></div></div>
     <div class="card-body">
       <h2 class="card-title">Last Night I Dreamt of the Sea</h2>
       <p class="card-meta">Acrylic on stretched canvas · 24 × 24 inches</p>
       <p class="card-desc">For people who need water like oxygen. Colourful and deeply felt.</p>
-      <div class="card-footer">
-        <span class="card-price">$450<span>CAD</span></span>
-        <a href="#" class="card-enquire" onclick="openModal('sea'); return false;">Enquire</a>
-      </div>
+      <div class="card-footer"><span class="card-price">$450<span>CAD</span></span><a href="#" class="card-enquire" onclick="openModal('sea');return false;">Enquire</a></div>
     </div>
   </div>
 
-  <!-- 7. Querencia -->
   <div class="card" onclick="openModal('querencia')">
-    <div class="card-image">
-      <img src="20240229_084331_8658f0b0-d708-11ee-8710-61a289b63752.JPG" alt="Querencia" />
-      <div class="card-overlay"><span class="card-overlay-btn">View Work</span></div>
-    </div>
+    <div class="card-image"><img src="20240229_084331_8658f0b0-d708-11ee-8710-61a289b63752.JPG" alt="Querencia" /><div class="card-overlay"><span class="card-overlay-btn">View Work</span></div></div>
     <div class="card-body">
       <h2 class="card-title">Querencia</h2>
       <p class="card-meta">Acrylic on heavy canvas · 101 × 72 inches · Ships rolled</p>
       <p class="card-desc">A bold statement piece about our definitions of home and the safe, stable places unique to each of us.</p>
-      <div class="card-footer">
-        <span class="card-price">$8,000<span>CAD</span></span>
-        <a href="#" class="card-enquire" onclick="openModal('querencia'); return false;">Enquire</a>
-      </div>
+      <div class="card-footer"><span class="card-price">$8,000<span>CAD</span></span><a href="#" class="card-enquire" onclick="openModal('querencia');return false;">Enquire</a></div>
     </div>
   </div>
 
-  <!-- 8. Thanks Martha and Team 1 -->
   <div class="card" onclick="openModal('martha1')">
-    <div class="card-image placeholder">
-      <span>Photo coming soon</span>
-    </div>
+    <div class="card-image"><img src="20231219_120437_b0d396c0-9e90-11ee-a2e5-d9de7befaf2f.JPG" alt="Thanks, Martha and Team No. 1" /><div class="card-overlay"><span class="card-overlay-btn">View Work</span></div></div>
     <div class="card-body">
       <h2 class="card-title">Thanks, Martha and Team (No. 1)</h2>
       <p class="card-meta">Acrylic transfer on canvas · 12 × 16 inches</p>
       <p class="card-desc">No. 1 in a series of three acrylic transfers on canvas. Excellent in a floating canvas frame.</p>
-      <div class="card-footer">
-        <span class="card-price">$100<span>CAD</span></span>
-        <a href="#" class="card-enquire" onclick="openModal('martha1'); return false;">Enquire</a>
-      </div>
+      <div class="card-footer"><span class="card-price">$100<span>CAD</span></span><a href="#" class="card-enquire" onclick="openModal('martha1');return false;">Enquire</a></div>
     </div>
   </div>
 
-  <!-- 9. Thanks Martha and Team 2 -->
   <div class="card" onclick="openModal('martha2')">
-    <div class="card-image placeholder">
-      <span>Photo coming soon</span>
-    </div>
+    <div class="card-image"><img src="593fd9e0-09b6-11f0-b5cf-5d17665fc015.jpg" alt="Thanks, Martha and Team No. 2" /><div class="card-overlay"><span class="card-overlay-btn">View Work</span></div></div>
     <div class="card-body">
       <h2 class="card-title">Thanks, Martha and Team (No. 2)</h2>
       <p class="card-meta">Acrylic transfer on stretched canvas · 12 × 16 inches</p>
-      <p class="card-desc">No. 2 in the series of three black and white transfers. Would make an excellent statement in a floating frame.</p>
-      <div class="card-footer">
-        <span class="card-price">$100<span>CAD</span></span>
-        <a href="#" class="card-enquire" onclick="openModal('martha2'); return false;">Enquire</a>
-      </div>
+      <p class="card-desc">No. 2 in the series of three black and white transfers. Makes an excellent statement in a floating frame.</p>
+      <div class="card-footer"><span class="card-price">$100<span>CAD</span></span><a href="#" class="card-enquire" onclick="openModal('martha2');return false;">Enquire</a></div>
     </div>
   </div>
 
-  <!-- 10. Spring in Three Expressions -->
   <div class="card" onclick="openModal('spring')">
-    <div class="card-image placeholder">
-      <span>Photo coming soon</span>
-    </div>
+    <div class="card-image placeholder"><span>Image available on request</span></div>
     <div class="card-body">
       <h2 class="card-title">Spring in Three Expressions</h2>
       <p class="card-meta">Acrylic on gallery wrapped canvas · 3 pieces, each 11 × 14 inches</p>
       <p class="card-desc">A happy set of acrylic dried paint collages inviting us into the hopeful spaces that new growth and new seasons can bring. Priced as a set, individual pieces available on request.</p>
-      <div class="card-footer">
-        <span class="card-price">$450<span>CAD</span></span>
-        <a href="#" class="card-enquire" onclick="openModal('spring'); return false;">Enquire</a>
-      </div>
+      <div class="card-footer"><span class="card-price">$450<span>CAD</span></span><a href="#" class="card-enquire" onclick="openModal('spring');return false;">Enquire</a></div>
     </div>
   </div>
 
-  <!-- 11. Wholeness in Three Stages -->
   <div class="card" onclick="openModal('wholeness')">
-    <div class="card-image placeholder">
-      <span>Photo coming soon</span>
-    </div>
+    <div class="card-image placeholder"><span>Image available on request</span></div>
     <div class="card-body">
       <h2 class="card-title">Wholeness in Three Stages</h2>
       <p class="card-meta">Acrylic on cradled wood · 3 pieces, each 12 × 16 inches</p>
       <p class="card-desc">Three acrylic statement pieces painted and varnished on cradled wood frames. Reading left to right: Emerging, Integrating, Living.</p>
-      <div class="card-footer">
-        <span class="card-price">$500<span>CAD</span></span>
-        <a href="#" class="card-enquire" onclick="openModal('wholeness'); return false;">Enquire</a>
-      </div>
+      <div class="card-footer"><span class="card-price">$500<span>CAD</span></span><a href="#" class="card-enquire" onclick="openModal('wholeness');return false;">Enquire</a></div>
     </div>
   </div>
 
-  <!-- 12. The End of the Dry Spell -->
   <div class="card" onclick="openModal('dryspell')">
-    <div class="card-image">
-      <img src="20231219_120437_b0d396c0-9e90-11ee-a2e5-d9de7befaf2f.JPG" alt="The End of the Dry Spell" />
-      <div class="card-overlay"><span class="card-overlay-btn">View Work</span></div>
-    </div>
+    <div class="card-image"><img src="20231127_132954_f55d6f40-8d52-11ee-9c03-4df9ead004c6.JPG" alt="The End of the Dry Spell" /><div class="card-overlay"><span class="card-overlay-btn">View Work</span></div></div>
     <div class="card-body">
       <h2 class="card-title">The End of the Dry Spell</h2>
       <p class="card-meta">Acrylic on canvas · 73 × 72 inches · Unstretched</p>
       <p class="card-desc">For the times when the struggles lift and something new comes forth. New chapters and new opportunities.</p>
-      <div class="card-footer">
-        <span class="card-price">$2,300<span>CAD</span></span>
-        <a href="#" class="card-enquire" onclick="openModal('dryspell'); return false;">Enquire</a>
-      </div>
+      <div class="card-footer"><span class="card-price">$2,300<span>CAD</span></span><a href="#" class="card-enquire" onclick="openModal('dryspell');return false;">Enquire</a></div>
     </div>
   </div>
 
-  <!-- 13. Yes To Flowers -->
   <div class="card" onclick="openModal('yesflowers')">
-    <div class="card-image placeholder">
-      <span>Photo coming soon</span>
-    </div>
+    <div class="card-image placeholder"><span>Image available on request</span></div>
     <div class="card-body">
       <h2 class="card-title">Yes! To Flowers</h2>
       <p class="card-meta">Acrylic on gallery wrapped canvas · 30 × 40 inches · Highly textured</p>
       <p class="card-desc">Lighthearted yet bold. A statement about love for flowers in all places and for all occasions.</p>
-      <div class="card-footer">
-        <span class="card-price">$1,000<span>CAD</span></span>
-        <a href="#" class="card-enquire" onclick="openModal('yesflowers'); return false;">Enquire</a>
-      </div>
+      <div class="card-footer"><span class="card-price">$1,000<span>CAD</span></span><a href="#" class="card-enquire" onclick="openModal('yesflowers');return false;">Enquire</a></div>
     </div>
   </div>
 
-  <!-- 14. Submerged 2 -->
   <div class="card" onclick="openModal('submerged2')">
-    <div class="card-image placeholder">
-      <span>Photo coming soon</span>
-    </div>
+    <div class="card-image placeholder"><span>Image available on request</span></div>
     <div class="card-body">
       <h2 class="card-title">Submerged, 2.</h2>
-      <p class="card-meta">Acrylic abstract · 24 × 24 inches · Can ship stretched or unstretched</p>
+      <p class="card-meta">Acrylic · 24 × 24 inches · Can ship stretched or unstretched</p>
       <p class="card-desc">Exploring deep consciousness.</p>
-      <div class="card-footer">
-        <span class="card-price">$400<span>CAD</span></span>
-        <a href="#" class="card-enquire" onclick="openModal('submerged2'); return false;">Enquire</a>
-      </div>
+      <div class="card-footer"><span class="card-price">$400<span>CAD</span></span><a href="#" class="card-enquire" onclick="openModal('submerged2');return false;">Enquire</a></div>
     </div>
   </div>
 
-  <!-- 15. Submerged 1 -->
   <div class="card" onclick="openModal('submerged1')">
-    <div class="card-image placeholder">
-      <span>Photo coming soon</span>
-    </div>
+    <div class="card-image placeholder"><span>Image available on request</span></div>
     <div class="card-body">
       <h2 class="card-title">Submerged, 1.</h2>
-      <p class="card-meta">Acrylic abstract · 24 × 24 inches · Can ship stretched or unstretched</p>
+      <p class="card-meta">Acrylic · 24 × 24 inches · Can ship stretched or unstretched</p>
       <p class="card-desc">Exploring deep consciousness.</p>
-      <div class="card-footer">
-        <span class="card-price">$400<span>CAD</span></span>
-        <a href="#" class="card-enquire" onclick="openModal('submerged1'); return false;">Enquire</a>
-      </div>
+      <div class="card-footer"><span class="card-price">$400<span>CAD</span></span><a href="#" class="card-enquire" onclick="openModal('submerged1');return false;">Enquire</a></div>
     </div>
   </div>
 
-  <!-- 16. Armchair Warriors -->
   <div class="card" onclick="openModal('armchair')">
-    <div class="card-image">
-      <img src="096bdd80-b270-11ef-b208-95b895dd2146.jpg" alt="Armchair Warriors" />
-      <div class="card-overlay"><span class="card-overlay-btn">View Work</span></div>
-    </div>
+    <div class="card-image"><img src="20231202_181425_88eace60-9168-11ee-ad70-6db459793c3d.JPG" alt="Armchair Warriors" /><div class="card-overlay"><span class="card-overlay-btn">View Work</span></div></div>
     <div class="card-body">
       <h2 class="card-title">Armchair Warriors</h2>
       <p class="card-meta">Acrylic on canvas · 6 × 4 feet · Ships unstretched</p>
       <p class="card-desc">Speaking to the ways we share strong opinions while finding safety behind a screen. Bold and unapologetic.</p>
-      <div class="card-footer">
-        <span class="card-price">$4,000<span>CAD</span></span>
-        <a href="#" class="card-enquire" onclick="openModal('armchair'); return false;">Enquire</a>
-      </div>
+      <div class="card-footer"><span class="card-price">$4,000<span>CAD</span></span><a href="#" class="card-enquire" onclick="openModal('armchair');return false;">Enquire</a></div>
     </div>
   </div>
 
-  <!-- 17. Six and Limitless -->
   <div class="card" onclick="openModal('sixlimitless')">
-    <div class="card-image">
-      <img src="593fd9e0-09b6-11f0-b5cf-5d17665fc015.jpg" alt="Six and Limitless" />
-      <div class="card-overlay"><span class="card-overlay-btn">View Work</span></div>
-    </div>
+    <div class="card-image"><img src="20240229_084331_8658f0b0-d708-11ee-8710-61a289b63752.JPG" alt="Six and Limitless" /><div class="card-overlay"><span class="card-overlay-btn">View Work</span></div></div>
     <div class="card-body">
       <h2 class="card-title">Six and Limitless</h2>
       <p class="card-meta">Acrylic on canvas · 53 × 78 inches</p>
       <p class="card-desc">A celebration of the refreshing innocence of childhood, when anything is possible and the world is limitless with joy.</p>
-      <div class="card-footer">
-        <span class="card-price">$4,000<span>CAD</span></span>
-        <a href="#" class="card-enquire" onclick="openModal('sixlimitless'); return false;">Enquire</a>
-      </div>
+      <div class="card-footer"><span class="card-price">$4,000<span>CAD</span></span><a href="#" class="card-enquire" onclick="openModal('sixlimitless');return false;">Enquire</a></div>
     </div>
   </div>
 
-  <!-- 18. Sunny Side Up -->
   <div class="card" onclick="openModal('sunnyside')">
-    <div class="card-image placeholder">
-      <span>Photo coming soon</span>
-    </div>
+    <div class="card-image placeholder"><span>Image available on request</span></div>
     <div class="card-body">
       <h2 class="card-title">Sunny Side Up</h2>
       <p class="card-meta">Acrylic on gallery wrapped canvas · 24 × 36 inches</p>
-      <p class="card-desc">Fun and bright.</p>
-      <div class="card-footer">
-        <span class="card-price">$450<span>CAD</span></span>
-        <a href="#" class="card-enquire" onclick="openModal('sunnyside'); return false;">Enquire</a>
-      </div>
+      <p class="card-desc">Fun and bright. A joyful acrylic piece.</p>
+      <div class="card-footer"><span class="card-price">$450<span>CAD</span></span><a href="#" class="card-enquire" onclick="openModal('sunnyside');return false;">Enquire</a></div>
     </div>
   </div>
 
-  <!-- 19. Morning Ablutions -->
   <div class="card" onclick="openModal('morning')">
-    <div class="card-image placeholder">
-      <span>Photo coming soon</span>
-    </div>
+    <div class="card-image placeholder"><span>Image available on request</span></div>
     <div class="card-body">
       <h2 class="card-title">Morning Ablutions</h2>
       <p class="card-meta">Acrylic on gallery wrapped canvas · 24 × 36 inches</p>
       <p class="card-desc">A fun and joyful acrylic piece.</p>
-      <div class="card-footer">
-        <span class="card-price">$450<span>CAD</span></span>
-        <a href="#" class="card-enquire" onclick="openModal('morning'); return false;">Enquire</a>
-      </div>
+      <div class="card-footer"><span class="card-price">$450<span>CAD</span></span><a href="#" class="card-enquire" onclick="openModal('morning');return false;">Enquire</a></div>
     </div>
   </div>
 
-  <!-- 20. Deferral -->
   <div class="card" onclick="openModal('deferral')">
-    <div class="card-image placeholder">
-      <span>Photo coming soon</span>
-    </div>
+    <div class="card-image placeholder"><span>Image available on request</span></div>
     <div class="card-body">
       <h2 class="card-title">Deferral</h2>
-      <p class="card-meta">Acrylic on canvas · 48 × 48 inches · Ships unstretched</p>
+      <p class="card-meta">Acrylic on canvas · approx. 48 × 48 inches · Ships unstretched</p>
       <p class="card-desc">Ships unstretched. Will measure approximately 48 × 48 inches when stretched at a reputable framer in your area.</p>
-      <div class="card-footer">
-        <span class="card-price">$2,500<span>CAD</span></span>
-        <a href="#" class="card-enquire" onclick="openModal('deferral'); return false;">Enquire</a>
-      </div>
+      <div class="card-footer"><span class="card-price">$2,500<span>CAD</span></span><a href="#" class="card-enquire" onclick="openModal('deferral');return false;">Enquire</a></div>
+    </div>
+  </div>
+
+  <div class="card" onclick="openModal('courage')">
+    <div class="card-image placeholder"><span>Image available on request</span></div>
+    <div class="card-body">
+      <h2 class="card-title">The Courage to Ask and Receive</h2>
+      <p class="card-meta">Acrylic on canvas</p>
+      <p class="card-desc">A powerful and contemplative work exploring vulnerability, openness, and the strength it takes to allow yourself to receive.</p>
+      <div class="card-footer"><span class="card-price">$2,500<span>CAD</span></span><a href="#" class="card-enquire" onclick="openModal('courage');return false;">Enquire</a></div>
+    </div>
+  </div>
+
+  <div class="card" onclick="openModal('lovehaswon2')">
+    <div class="card-image placeholder"><span>Image available on request</span></div>
+    <div class="card-body">
+      <h2 class="card-title">Love Has Won #2</h2>
+      <p class="card-meta">Acrylic on canvas</p>
+      <p class="card-desc">Part of a powerful diptych series. Love as a force that overcomes, persists, and transforms.</p>
+      <div class="card-footer"><span class="card-price">$4,000<span>CAD</span></span><a href="#" class="card-enquire" onclick="openModal('lovehaswon2');return false;">Enquire</a></div>
+    </div>
+  </div>
+
+  <div class="card" onclick="openModal('lovehaswon1')">
+    <div class="card-image placeholder"><span>Image available on request</span></div>
+    <div class="card-body">
+      <h2 class="card-title">Love Has Won #1</h2>
+      <p class="card-meta">Acrylic on canvas</p>
+      <p class="card-desc">Part of a powerful diptych series. Love as a force that overcomes, persists, and transforms.</p>
+      <div class="card-footer"><span class="card-price">$4,000<span>CAD</span></span><a href="#" class="card-enquire" onclick="openModal('lovehaswon1');return false;">Enquire</a></div>
     </div>
   </div>
 
 </div>
 
-<!-- FOOTER -->
 <footer>
-  <p>
-    © 2025 Tammy Roggie Art &nbsp;·&nbsp; All works are original paintings &nbsp;·&nbsp;
-    <a href="mailto:tammyroggieart@gmail.com">tammyroggieart@gmail.com</a> &nbsp;·&nbsp;
-    <a href="https://www.instagram.com/grandunionarts" target="_blank">@grandunionarts</a>
-  </p>
+  <p>© 2025 Tammy Roggie Art &nbsp;·&nbsp; All works are original paintings &nbsp;·&nbsp; <a href="mailto:tammyroggieart@gmail.com">tammyroggieart@gmail.com</a> &nbsp;·&nbsp; <a href="https://www.instagram.com/grandunionarts" target="_blank">@grandunionarts</a></p>
 </footer>
 
-<!-- MODAL -->
 <div class="modal" id="modal" onclick="closeModal(event)">
   <button class="modal-close" onclick="closeModal()">×</button>
   <div class="modal-inner" onclick="event.stopPropagation()">
-    <div class="modal-image" id="modal-image-wrap">
-      <img id="modal-img" src="" alt="" />
-    </div>
+    <div class="modal-image" id="modal-image-wrap"></div>
     <div class="modal-content">
       <p class="modal-label">Original Work</p>
       <h2 class="modal-title" id="modal-title"></h2>
@@ -720,26 +418,29 @@
 
 <script>
   const works = {
-    noflowers:   { img: '41c26270-3993-11f1-a250-5597e4018997.jpg', title: 'NoFlowers, Please: Just You.', desc: 'Emotionally charged, expressive and textured. A work that asks to be met as you are, without adornment or pretense.', details: 'Medium: Acrylic on stretched canvas\nSize: 24 × 36 inches', price: '$750 CAD' },
-    hothouse:    { img: '20231127_132954_f55d6f40-8d52-11ee-9c03-4df9ead004c6.JPG', title: 'Hothouse Flowers', desc: 'A vibrant acrylic still life. Lush, alive and overflowing.', details: 'Medium: Acrylic on stretched canvas\nSize: 36 × 36 inches\nShipping costs the responsibility of the purchaser', price: '$850 CAD' },
-    waterflow:   { img: '094e1190-3d73-11f0-9ce7-4df9dcc85dfc.jpg', title: 'Water, Flow, Life', desc: 'A soft feeling painting about the beauty of going with the flow and radical acceptance. An invitation to release and trust.', details: 'Medium: Acrylic on stretched canvas\nSize: 69 × 34 inches', price: '$1,800 CAD' },
-    goodday:     { img: null, title: 'This is A Good Day', desc: 'A good day is a decision. Some days feel easier than others. This piece also speaks of warm, safe places when the cold and hardness of the world can be too much. There is light and there is hope and sanctuary.', details: 'Medium: Acrylic on gallery wrapped canvas\nSize: 30 × 40 inches', price: '$1,000 CAD' },
-    yellowbrick: { img: '47fe7750-26d3-11f1-9bbe-810ad4a72062.jpg', title: 'Your Own Yellow Brick Road', desc: 'What brings you the feeling of most peace and harmony? A statement piece reminding us that we walk best when we walk a resonant, personal path.', details: 'Medium: Acrylic on heavy canvas\nSize: 72 × 73 inches\nShips rolled due to size', price: '$4,000 CAD' },
-    sea:         { img: '20231202_181425_88eace60-9168-11ee-ad70-6db459793c3d.JPG', title: 'Last Night I Dreamt of the Sea', desc: 'Dreaming of the ocean is an everyday occurrence for people who need water like oxygen. A colourful and deeply felt piece.', details: 'Medium: Acrylic on stretched canvas\nSize: 24 × 24 inches', price: '$450 CAD' },
-    querencia:   { img: '20240229_084331_8658f0b0-d708-11ee-8710-61a289b63752.JPG', title: 'Querencia', desc: 'A bold, large statement piece about our definitions of home and the safe, stable places that are unique to each of us.', details: 'Medium: Acrylic on heavy canvas\nSize: 101 × 72 inches\nShips rolled due to size', price: '$8,000 CAD' },
-    martha1:     { img: null, title: 'Thanks, Martha and Team (No. 1)', desc: 'No. 1 in a series of three acrylic transfers on canvas. Can be placed in a floating canvas frame for added effect.', details: 'Medium: Acrylic transfer on canvas\nSize: 12 × 16 inches · 0.5 inch profile', price: '$100 CAD' },
-    martha2:     { img: null, title: 'Thanks, Martha and Team (No. 2)', desc: 'No. 2 in the series of three black and white transfers of acrylic on stretched canvas. Would make an excellent statement in a floating frame.', details: 'Medium: Acrylic transfer on stretched canvas\nSize: 12 × 16 inches · 0.5 inch profile', price: '$100 CAD' },
-    spring:      { img: null, title: 'Spring in Three Expressions', desc: 'A happy set of acrylic dried paint collages inviting us into the hopeful spaces that new growth and new seasons can bring. Priced as a set, individual pieces available on request.', details: 'Medium: Acrylic collage on gallery wrapped canvas\nSize: 3 pieces, each 11 × 14 inches', price: '$450 CAD (set)' },
-    wholeness:   { img: null, title: 'Wholeness in Three Stages', desc: 'Three acrylic statement pieces painted and varnished on cradled wood frames. Reading left to right: Emerging, Integrating, Living.', details: 'Medium: Acrylic on cradled wood\nSize: 3 pieces, each 12 × 16 inches', price: '$500 CAD' },
-    dryspell:    { img: '20231219_120437_b0d396c0-9e90-11ee-a2e5-d9de7befaf2f.JPG', title: 'The End of the Dry Spell', desc: 'Speaking to the times when the struggles lift and something new comes forth. New chapters and new opportunities.', details: 'Medium: Acrylic on canvas\nSize: 73 × 72 inches\nUnstretched lightweight canvas', price: '$2,300 CAD' },
-    yesflowers:  { img: null, title: 'Yes! To Flowers', desc: 'Lighthearted yet bold. A statement about love for flowers in all places and for all occasions. Highly textured.', details: 'Medium: Acrylic on gallery wrapped canvas\nSize: 30 × 40 inches', price: '$1,000 CAD' },
-    submerged2:  { img: null, title: 'Submerged, 2.', desc: 'Acrylic abstract exploring deep consciousness.', details: 'Medium: Acrylic\nSize: 24 × 24 inches\nCan ship stretched or unstretched', price: '$400 CAD' },
-    submerged1:  { img: null, title: 'Submerged, 1.', desc: 'Acrylic abstract exploring deep consciousness.', details: 'Medium: Acrylic\nSize: 24 × 24 inches\nCan ship stretched or unstretched', price: '$400 CAD' },
-    armchair:    { img: '096bdd80-b270-11ef-b208-95b895dd2146.jpg', title: 'Armchair Warriors', desc: 'Speaking to the ways we share strong opinions and ideas while finding safety behind a screen. Bold, unapologetic, and very large.', details: 'Medium: Acrylic on canvas\nSize: 6 feet wide × 4 feet high\nShips unstretched', price: '$4,000 CAD' },
-    sixlimitless:{ img: '593fd9e0-09b6-11f0-b5cf-5d17665fc015.jpg', title: 'Six and Limitless', desc: 'A celebration of the refreshing innocence of childhood, when anything is possible and the world is limitless with joy.', details: 'Medium: Acrylic on canvas\nSize: 53 × 78 inches', price: '$4,000 CAD' },
-    sunnyside:   { img: null, title: 'Sunny Side Up', desc: 'Fun and bright. A joyful acrylic piece.', details: 'Medium: Acrylic on gallery wrapped canvas\nSize: 24 × 36 inches', price: '$450 CAD' },
-    morning:     { img: null, title: 'Morning Ablutions', desc: 'A fun and joyful acrylic piece.', details: 'Medium: Acrylic on gallery wrapped canvas\nSize: 24 × 36 inches', price: '$450 CAD' },
-    deferral:    { img: null, title: 'Deferral', desc: 'Ships unstretched. Will measure approximately 48 × 48 inches when stretched at a reputable framer in your area.', details: 'Medium: Acrylic on canvas\nSize: approx. 48 × 48 inches when stretched\nShips unstretched', price: '$2,500 CAD' }
+    noflowers:    { img: '41c26270-3993-11f1-a250-5597e4018997.jpg',                           title: 'NoFlowers, Please: Just You.',        desc: 'Emotionally charged, expressive and textured. A work that asks to be met as you are, without adornment or pretense.',                                                                                  details: 'Medium: Acrylic on stretched canvas\nSize: 24 × 36 inches',                                              price: '$750 CAD' },
+    hothouse:     { img: '20231127_132954_f55d6f40-8d52-11ee-9c03-4df9ead004c6.JPG',           title: 'Hothouse Flowers',                    desc: 'A vibrant acrylic still life. Lush, alive and overflowing with colour and energy.',                                                                                                                          details: 'Medium: Acrylic on stretched canvas\nSize: 36 × 36 inches\nShipping costs the responsibility of the purchaser', price: '$850 CAD' },
+    waterflow:    { img: '094e1190-3d73-11f0-9ce7-4df9dcc85dfc.jpg',                           title: 'Water, Flow, Life',                   desc: 'A soft feeling painting about the beauty of going with the flow and radical acceptance. An invitation to release and trust.',                                                                             details: 'Medium: Acrylic on stretched canvas\nSize: 69 × 34 inches',                                              price: '$1,800 CAD' },
+    goodday:      { img: '20231202_181425_88eace60-9168-11ee-ad70-6db459793c3d.JPG',           title: 'This is A Good Day',                  desc: 'A good day is a decision. Some days feel easier than others. This piece speaks of warm, safe places when the cold and hardness of the world can be too much. There is light and there is hope and sanctuary.', details: 'Medium: Acrylic on gallery wrapped canvas\nSize: 30 × 40 inches',                                          price: '$1,000 CAD' },
+    yellowbrick:  { img: '47fe7750-26d3-11f1-9bbe-810ad4a72062.jpg',                           title: 'Your Own Yellow Brick Road',          desc: 'What brings you the feeling of most peace and harmony? A statement piece reminding us that we walk best when we walk a resonant, personal path.',                                                            details: 'Medium: Acrylic on heavy canvas\nSize: 72 × 73 inches\nShips rolled due to size',                        price: '$4,000 CAD' },
+    sea:          { img: '096bdd80-b270-11ef-b208-95b895dd2146.jpg',                           title: 'Last Night I Dreamt of the Sea',      desc: 'Dreaming of the ocean is an everyday occurrence for people who need water like oxygen. A colourful and deeply felt piece.',                                                                                    details: 'Medium: Acrylic on stretched canvas\nSize: 24 × 24 inches',                                              price: '$450 CAD' },
+    querencia:    { img: '20240229_084331_8658f0b0-d708-11ee-8710-61a289b63752.JPG',           title: 'Querencia',                           desc: 'A bold, large statement piece about our definitions of home and the safe, stable places that are unique to each of us.',                                                                                       details: 'Medium: Acrylic on heavy canvas\nSize: 101 × 72 inches\nShips rolled due to size',                       price: '$8,000 CAD' },
+    martha1:      { img: '20231219_120437_b0d396c0-9e90-11ee-a2e5-d9de7befaf2f.JPG',           title: 'Thanks, Martha and Team (No. 1)',     desc: 'No. 1 in a series of three acrylic transfers on canvas. Can be placed in a floating canvas frame for added effect.',                                                                                         details: 'Medium: Acrylic transfer on canvas\nSize: 12 × 16 inches · 0.5 inch profile',                           price: '$100 CAD' },
+    martha2:      { img: '593fd9e0-09b6-11f0-b5cf-5d17665fc015.jpg',                          title: 'Thanks, Martha and Team (No. 2)',     desc: 'No. 2 in the series of three black and white transfers of acrylic on stretched canvas. Makes an excellent statement in a floating frame.',                                                                    details: 'Medium: Acrylic transfer on stretched canvas\nSize: 12 × 16 inches · 0.5 inch profile',                 price: '$100 CAD' },
+    spring:       { img: null,                                                                  title: 'Spring in Three Expressions',         desc: 'A happy set of acrylic dried paint collages inviting us into the hopeful spaces that new growth and new seasons can bring. Priced as a set, individual pieces available on request.',                            details: 'Medium: Acrylic collage on gallery wrapped canvas\nSize: 3 pieces, each 11 × 14 inches',                price: '$450 CAD (set)' },
+    wholeness:    { img: null,                                                                  title: 'Wholeness in Three Stages',           desc: 'Three acrylic statement pieces painted and varnished on cradled wood frames. Reading left to right: Emerging, Integrating, Living.',                                                                             details: 'Medium: Acrylic on cradled wood\nSize: 3 pieces, each 12 × 16 inches',                                   price: '$500 CAD' },
+    dryspell:     { img: '20231127_132954_f55d6f40-8d52-11ee-9c03-4df9ead004c6.JPG',           title: 'The End of the Dry Spell',            desc: 'For the times when the struggles lift and something new comes forth. New chapters and new opportunities.',                                                                                                        details: 'Medium: Acrylic on canvas\nSize: 73 × 72 inches\nUnstretched lightweight canvas',                       price: '$2,300 CAD' },
+    yesflowers:   { img: null,                                                                  title: 'Yes! To Flowers',                     desc: 'Lighthearted yet bold. A statement about love for flowers in all places and for all occasions. Highly textured.',                                                                                                  details: 'Medium: Acrylic on gallery wrapped canvas\nSize: 30 × 40 inches',                                        price: '$1,000 CAD' },
+    submerged2:   { img: null,                                                                  title: 'Submerged, 2.',                       desc: 'Acrylic abstract exploring deep consciousness.',                                                                                                                                                                details: 'Medium: Acrylic\nSize: 24 × 24 inches\nCan ship stretched or unstretched',                              price: '$400 CAD' },
+    submerged1:   { img: null,                                                                  title: 'Submerged, 1.',                       desc: 'Acrylic abstract exploring deep consciousness.',                                                                                                                                                                details: 'Medium: Acrylic\nSize: 24 × 24 inches\nCan ship stretched or unstretched',                              price: '$400 CAD' },
+    armchair:     { img: '20231202_181425_88eace60-9168-11ee-ad70-6db459793c3d.JPG',           title: 'Armchair Warriors',                   desc: 'Speaking to the ways we share strong opinions and ideas while finding safety behind a screen. Bold, unapologetic, and very large.',                                                                             details: 'Medium: Acrylic on canvas\nSize: 6 feet wide × 4 feet high\nShips unstretched',                         price: '$4,000 CAD' },
+    sixlimitless: { img: '20240229_084331_8658f0b0-d708-11ee-8710-61a289b63752.JPG',           title: 'Six and Limitless',                   desc: 'A celebration of the refreshing innocence of childhood, when anything is possible and the world is limitless with joy.',                                                                                       details: 'Medium: Acrylic on canvas\nSize: 53 × 78 inches',                                                        price: '$4,000 CAD' },
+    sunnyside:    { img: null,                                                                  title: 'Sunny Side Up',                       desc: 'Fun and bright. A joyful acrylic piece.',                                                                                                                                                                       details: 'Medium: Acrylic on gallery wrapped canvas\nSize: 24 × 36 inches',                                        price: '$450 CAD' },
+    morning:      { img: null,                                                                  title: 'Morning Ablutions',                   desc: 'A fun and joyful acrylic piece.',                                                                                                                                                                               details: 'Medium: Acrylic on gallery wrapped canvas\nSize: 24 × 36 inches',                                        price: '$450 CAD' },
+    deferral:     { img: null,                                                                  title: 'Deferral',                            desc: 'Ships unstretched. Will measure approximately 48 × 48 inches when stretched at a reputable framer in your area.',                                                                                                 details: 'Medium: Acrylic on canvas\nSize: approx. 48 × 48 inches when stretched\nShips unstretched',             price: '$2,500 CAD' },
+    courage:      { img: null,                                                                  title: 'The Courage to Ask and Receive',      desc: 'A powerful and contemplative work exploring vulnerability, openness, and the strength it takes to allow yourself to receive.',                                                                                    details: 'Medium: Acrylic on canvas',                                                                              price: '$2,500 CAD' },
+    lovehaswon2:  { img: null,                                                                  title: 'Love Has Won #2',                     desc: 'Part of a powerful diptych series. Love as a force that overcomes, persists, and transforms.',                                                                                                                   details: 'Medium: Acrylic on canvas',                                                                              price: '$4,000 CAD' },
+    lovehaswon1:  { img: null,                                                                  title: 'Love Has Won #1',                     desc: 'Part of a powerful diptych series. Love as a force that overcomes, persists, and transforms.',                                                                                                                   details: 'Medium: Acrylic on canvas',                                                                              price: '$4,000 CAD' }
   };
 
   function openModal(id) {
@@ -755,7 +456,7 @@
     document.getElementById('modal-title').textContent = w.title;
     document.getElementById('modal-desc').textContent = w.desc;
     document.getElementById('modal-details').textContent = w.details;
-    document.getElementById('modal-price').innerHTML = w.price;
+    document.getElementById('modal-price').textContent = w.price;
     const subject = encodeURIComponent('Enquiry: ' + w.title);
     const body = encodeURIComponent('Hi Tammy,\n\nI am interested in "' + w.title + '" and would love to learn more.\n\nName: \nLocation: \n\nMessage:\n\n\nThank you for your time.');
     document.getElementById('modal-btn').href = 'mailto:tammyroggieart@gmail.com?subject=' + subject + '&body=' + body;
@@ -774,16 +475,8 @@
 
   const hamburger = document.getElementById('hamburger');
   const navLinks = document.getElementById('nav-links');
-  hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('open');
-    navLinks.classList.toggle('open');
-  });
-  navLinks.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      hamburger.classList.remove('open');
-      navLinks.classList.remove('open');
-    });
-  });
+  hamburger.addEventListener('click', () => { hamburger.classList.toggle('open'); navLinks.classList.toggle('open'); });
+  navLinks.querySelectorAll('a').forEach(link => { link.addEventListener('click', () => { hamburger.classList.remove('open'); navLinks.classList.remove('open'); }); });
 </script>
 </body>
 </html>
